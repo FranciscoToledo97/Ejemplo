@@ -25,9 +25,3 @@ jobs:
       uses: aquasecurity/trivy-action@master
       with:
         image-ref: demo-app
-
-
-
-
-
-
