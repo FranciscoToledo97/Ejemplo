@@ -1,18 +1,13 @@
-const express = require('express');
-const app = express();
+const escape = require('escape-html');
+const math = require('mathjs');
+
 app.get('/', (req, res) => {
     const userInput = req.query.name;
-
-    res.send(`<h1>Hello ${userInput}</h1>`);
+    res.send(`<h1>Hello ${escape(userInput)}</h1>`);
 });
 
 app.get('/calc', (req, res) => {
     const expression = req.query.expr;
-    const result = eval(expression);
+    const result = math.evaluate(expression);
     res.send(`Result: ${result}`);
 });
-
-app.listen(3000, () => {
-    console.log('App running on port 3000');
-});
-
