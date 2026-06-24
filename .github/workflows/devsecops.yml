@@ -1,0 +1,33 @@
+name: DevSecOps Demo
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  security:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Run Semgrep
+      uses: returntocorp/semgrep-action@v1
+
+    - name: Dependency scan
+      run: npm install && npm audit --audit-level=high
+
+    - name: Build Docker image
+      run: docker build -t demo-app .
+
+    - name: Run Trivy scan
+      uses: aquasecurity/trivy-action@master
+      with:
+        image-ref: demo-app
+
+
+
+
+
+
