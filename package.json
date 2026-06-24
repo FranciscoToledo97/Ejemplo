@@ -1,7 +1,11 @@
 {
   "name": "devsecops-demo",
   "version": "1.0.0",
-  "dependencies": {
-    "express": "4.17.1"
-  }
+
+"dependencies": {
+  "express": "^4.19.2",
+  "mathjs": "^12.4.0",
+  "escape-html": "^1.0.3"
+}
+
 }
